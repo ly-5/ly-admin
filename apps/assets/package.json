@@ -1,0 +1,14 @@
+{
+  "name": "assets",
+  "private": true,
+  "version": "1.0.0",
+  "author": "liuYun",
+  "scripts": {
+    "dev": "max dev"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "typescript": "catalog:",
+    "@ly/umi-config": "workspace:*"
+  }
+}
