@@ -1,14 +1,15 @@
 {
-  "name": "assets",
+  "name": "veh",
   "private": true,
   "version": "1.0.0",
   "author": "liuYun",
   "scripts": {
-    "dev": "max dev"
+    "dev": "max dev",
+    "build": "max build",
+    "build:sit": "cross-env UMI_ENV=sit max build"
   },
   "dependencies": {},
   "devDependencies": {
-    "typescript": "catalog:",
     "@ly/umi-config": "workspace:*"
   }
 }

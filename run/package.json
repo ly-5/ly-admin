@@ -7,9 +7,7 @@
   "scripts": {
     "stub": "pnpm unbuild --stub"
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "bin": {
     "turbo-run": "./bin/turbo-run.mjs"
   },

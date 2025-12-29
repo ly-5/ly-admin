@@ -1,9 +1,7 @@
-import yayJpg from '../assets/yay.jpg';
+import React from "react";
 
-export default function HomePage() {
-  return (
-    <div>
-      子应用
-    </div>
-  );
-}
+const HomePage: React.FC = () => {
+  return <div>主应用</div>;
+};
+
+export default HomePage;
