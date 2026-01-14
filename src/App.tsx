@@ -7,7 +7,7 @@ export default function Page() {
     <SidebarProvider>
       <AppSidebar />
       <SidebarInset>
-        <header className="flex h-16 shrink-0 items-center gap-2">
+        <header className="bg-background sticky top-0 flex h-16 shrink-0 items-center gap-2 rounded-xl">
           <div className="flex items-center gap-2 px-4">
             <SidebarTrigger className="-ml-1" />
             {/* <Separator
@@ -22,7 +22,7 @@ export default function Page() {
             <div className="bg-muted/50 aspect-video rounded-xl" />
             <div className="bg-muted/50 aspect-video rounded-xl" />
           </div>
-          <div className="bg-muted/50 min-h-[100vh] flex-1 rounded-xl md:min-h-min" />
+          <div className="bg-muted/50 min-h-[500px] flex-1 rounded-xl">111</div>
         </div>
       </SidebarInset>
     </SidebarProvider>
