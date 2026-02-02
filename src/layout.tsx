@@ -1,7 +1,7 @@
 import type { MenuItem } from '@/api/core'
 
 import * as React from 'react'
-
+import { NavLink } from 'react-router-dom'
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible'
 
 import { Command, ChevronRight } from 'lucide-react'
@@ -89,7 +89,7 @@ export function NavMain({ items }: { items: MenuItem[] }) {
     // </SidebarGroup>
     <SidebarMenu>
       {items.map((item) => (
-        <Collapsible key={item.name} asChild className="group/collapsible">
+        <Collapsible key={item.name} asChild className="group/collapsible mx-2">
           <SidebarMenuItem>
             <CollapsibleTrigger asChild>
               <SidebarMenuButton tooltip={item.name}>
@@ -103,9 +103,9 @@ export function NavMain({ items }: { items: MenuItem[] }) {
                 {(item.children || []).map((subItem) => (
                   <SidebarMenuSubItem key={subItem.name}>
                     <SidebarMenuSubButton asChild>
-                      <a href={subItem.path}>
+                      <NavLink to={subItem.path}>
                         <span>{subItem.name}</span>
-                      </a>
+                      </NavLink>
                     </SidebarMenuSubButton>
                   </SidebarMenuSubItem>
                 ))}

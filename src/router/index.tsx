@@ -4,29 +4,57 @@ import App from '@/App.tsx'
 
 import { useGetMenusQuery, type MenuItem } from '@/api/core'
 
+const pages = import.meta.glob('@/pages/**/index.tsx')
+
 function useAppRouter() {
   const { data } = useGetMenusQuery()
 
-  const transformMenus: (items: MenuItem[], parentPath?: string) => any = (
-    items,
-    parentPath = ''
-  ) => {
-    return items.map((item) => ({
-      ...item,
-      path: `${parentPath}${item.path}`,
-      lazy: async () => {
-        if (item.menuType === 2) {
-          const { default: Component } = await import(`@/pages${parentPath}${item.path}/index.tsx`)
-          return { Component }
-        }
-        return {}
-      },
+  const a = [
+    {
+      id: 1,
+      name: '首页',
+      path: '/',
+      menuType: 1,
+      icon: 'SquareTerminal',
+      children: [
+        {
+          id: 2,
+          menuType: 2,
+          name: '工作台',
+          path: 'dashboard',
+        },
+      ],
+    },
+  ]
 
-      children: transformMenus(item.children || [], item.path),
-    }))
+  const transformMenus = ({
+    items,
+    parentPath = '',
+  }: {
+    items: MenuItem[]
+    parentPath?: string | undefined
+  }): any => {
+    return items.map((item) => {
+      return {
+        ...item,
+        path: `${parentPath}${item.path}`,
+        lazy:
+          item.menuType === 2
+            ? async () => {
+                const module = await pages[`/src/pages${parentPath}${item.path}/index.tsx`]()
+                const { default: Component } = module as { default: React.ComponentType }
+                return { Component }
+              }
+            : undefined,
+        children: transformMenus({
+          items: item.children || [],
+          parentPath: `${parentPath}${item.path}`,
+        }),
+      }
+    })
   }
 
-  return transformMenus(data || [])
+  return transformMenus({ items: a || [] })
 }
 
 export function RouterPage() {
