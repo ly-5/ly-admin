@@ -1,17 +1,20 @@
 import { AppSidebar } from '@/layout'
 // import { Separator } from "@/components/ui/separator"
 import { SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar'
-import { Outlet } from 'react-router-dom'
+import { useLoaderData, Outlet } from 'react-router-dom'
 import { Toaster } from '@/components/ui/sonner'
 
 export default function Page() {
+  const menus = useLoaderData()
+  console.log(menus, '111111111111')
+
   return (
     <SidebarProvider>
       <Toaster position="top-center" />
 
-      <AppSidebar />
+      <AppSidebar items={menus} />
       <SidebarInset>
-        <header className="bg-background sticky top-0 flex h-16 shrink-0 items-center gap-2 rounded-xl">
+        <header className="sticky top-0 flex h-16 shrink-0 items-center gap-2 rounded-xl">
           <div className="flex items-center gap-2 px-4">
             <SidebarTrigger className="-ml-1" />
             {/* <Separator

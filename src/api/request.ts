@@ -2,10 +2,16 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { toast } from 'sonner'
 
 const token =
-  'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpblR5cGUiOiJsb2dpbiIsImxvZ2luSWQiOiJzeXNfdXNlcjoxOTk0Njk0MDU0NjgzNDU1NDk2Iiwicm5TdHIiOiJrb0Y3ZVJZazM0bTBKYU9qYWJKTXdVRFJZMG5GT3RRUyIsImNsaWVudGlkIjoiZTVjZDdlNDg5MWJmOTVkMWQxOTIwNmNlMjRhN2IzMmUiLCJ0ZW5hbnRJZCI6IjAwMDAwMCIsInVzZXJJZCI6MTk5NDY5NDA1NDY4MzQ1NTQ5NiwiY29kZSI6IjAwMDA2MTM2IiwidXNlck5hbWUiOiJ6aG91emhhbyIsIm5pY2tuYW1lIjoi5ZGo6ZKKIiwiZGVwdElkIjoxOTk0NjkzNjMzMTM5MTI2MjczLCJkZXB0TmFtZSI6IuS6p-WTgeeglOWPkemDqCIsImRlcHRDYXRlZ29yeSI6IiJ9.GDx31k_MlNmbCsHEqPPjO0aLtSbArUlnm9MlnPXyBtU'
+  'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpblR5cGUiOiJsb2dpbiIsImxvZ2luSWQiOiJzeXNfdXNlcjoxIiwicm5TdHIiOiJTSlZ1ZVF6ZzlVMkFWdUNqSWs5M0FleXh5RkxjRDU2aCIsImNsaWVudGlkIjoiZTVjZDdlNDg5MWJmOTVkMWQxOTIwNmNlMjRhN2IzMmUiLCJ0ZW5hbnRJZCI6IjAwMDAwMCIsInVzZXJJZCI6MSwiY29kZSI6Ik5PMzIxMzIxMyIsInVzZXJOYW1lIjoiYWRtaW4iLCJuaWNrbmFtZSI6IueWr-eLgueahOeLruWtkCIsImRlcHRJZCI6MTAwMDAwLCJkZXB0TmFtZSI6IuebiOWzsOeOr-WigyIsImRlcHRDYXRlZ29yeSI6IiJ9.22m1FfuAN0EC2PYHQACmOG8H90x3EhJWAE6DbN3PPAI'
 
 const SUCCESS_CODE = 200
 // const UNAUTHORIZED_CODE = 401
+
+interface ApiResponse<T> {
+  code: number
+  data: T
+  msg?: string
+}
 
 const baseQuery = fetchBaseQuery({
   baseUrl: '/api',
@@ -18,14 +24,14 @@ const baseQuery = fetchBaseQuery({
   },
 
   responseHandler: async (response) => {
-    const data = await response.json()
+    const data = (await response.json()) as ApiResponse<any>
 
     if (data.code !== SUCCESS_CODE) {
       toast.error(data.msg || '服务器异常，请刷新后重试')
       throw { data }
     }
 
-    return data
+    return data.data
   },
 })
 

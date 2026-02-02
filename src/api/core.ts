@@ -1,5 +1,3 @@
-import type { ApiResponse } from '@/api/common'
-
 import { apiSlice } from '@/api/request'
 
 export interface MenuItem {
@@ -7,12 +5,13 @@ export interface MenuItem {
   name: string
   path: string
   icon?: string
+  menuType: number
   children?: MenuItem[]
 }
 
 const coreApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getMenus: builder.query<ApiResponse<MenuItem[]>, void>({
+    getMenus: builder.query<MenuItem[], void>({
       query: () => '/system/menu/getRouters',
     }),
   }),
