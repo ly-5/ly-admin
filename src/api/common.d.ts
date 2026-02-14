@@ -17,5 +17,4 @@ export interface PageResult<T> {
 export interface PageParams {
   pageNum: number
   pageSize: number
-  [key: string]: any
 }

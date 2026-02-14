@@ -1,13 +1,13 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
-import App from '@/App.tsx'
+import RootLayout from '@/layout/index.tsx'
 
 import { useGetMenusQuery, type MenuItem } from '@/api/core'
 
 const pages = import.meta.glob('@/pages/**/index.tsx')
 
 function useAppRouter() {
-  const { data } = useGetMenusQuery()
+  useGetMenusQuery()
 
   const a = [
     {
@@ -62,7 +62,7 @@ export function RouterPage() {
   const router = createBrowserRouter([
     {
       path: '/',
-      Component: App,
+      Component: RootLayout,
       loader: async () => menus,
       children: menus,
     },

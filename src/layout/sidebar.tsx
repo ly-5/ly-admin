@@ -13,12 +13,9 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-  // SidebarGroup,
-  // SidebarGroupLabel,
   SidebarMenuSub,
   SidebarMenuSubButton,
   SidebarMenuSubItem,
-  // SidebarMenuSkeleton,
 } from '@/components/ui/sidebar'
 
 export function AppSidebar({
@@ -56,37 +53,6 @@ export function AppSidebar({
 
 export function NavMain({ items }: { items: MenuItem[] }) {
   return (
-    // <SidebarGroup>
-    //   <SidebarGroupLabel>home</SidebarGroupLabel>
-    //   <SidebarMenu>
-    //     {items.map((item) => (
-    //       <Collapsible key={item.name} asChild className="group/collapsible">
-    //         <SidebarMenuItem>
-    //           <CollapsibleTrigger asChild>
-    //             <SidebarMenuButton tooltip={item.name}>
-    //               {item.icon && <Command />}
-    //               <span>{item.name}</span>
-    //               <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
-    //             </SidebarMenuButton>
-    //           </CollapsibleTrigger>
-    //           <CollapsibleContent>
-    //             <SidebarMenuSub>
-    //               {(item.children || []).map((subItem) => (
-    //                 <SidebarMenuSubItem key={subItem.name}>
-    //                   <SidebarMenuSubButton asChild>
-    //                     <a href={subItem.path}>
-    //                       <span>{subItem.name}</span>
-    //                     </a>
-    //                   </SidebarMenuSubButton>
-    //                 </SidebarMenuSubItem>
-    //               ))}
-    //             </SidebarMenuSub>
-    //           </CollapsibleContent>
-    //         </SidebarMenuItem>
-    //       </Collapsible>
-    //     ))}
-    //   </SidebarMenu>
-    // </SidebarGroup>
     <SidebarMenu>
       {items.map((item) => (
         <Collapsible key={item.name} asChild className="group/collapsible mx-2">
