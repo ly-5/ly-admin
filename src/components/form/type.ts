@@ -9,6 +9,7 @@ export type FormItemProps = {
   hidden?: boolean | ((values: FieldValues) => boolean)
   hideLabel?: boolean
   labelWidth?: number
+  componentProps?: Record<string, any>
   orientation?: 'horizontal' | 'vertical'
   render?: ControllerProps<FieldValues>['render']
 }
