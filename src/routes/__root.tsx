@@ -28,6 +28,7 @@ export const Route = createRootRoute({
     ],
   }),
   shellComponent: RootDocument,
+  notFoundComponent: () => <div>404</div>,
 })
 
 function RootDocument({ children }: { children: React.ReactNode }) {
@@ -39,6 +40,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       </head>
       <body className="font-sans antialiased [overflow-wrap:anywhere] selection:bg-[rgba(79,184,178,0.24)]">
         {children}
+
         <TanStackDevtools
           config={{
             position: 'bottom-right',
@@ -54,4 +56,4 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       </body>
     </html>
   )
-}
+};
