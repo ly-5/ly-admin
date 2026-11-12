@@ -1,16 +1,16 @@
 import { createFileRoute, Outlet } from '@tanstack/react-router'
 
-import { Header, Nav } from '@/layout';
+import { Header, SiderMenu } from '@/layout';
 import { Layout } from '@douyinfe/semi-ui';
 
 
 export const Route = createFileRoute('/_admin')({
   ssr: false,
   component: () => (
-    <Layout>
+    <Layout className="h-full">
       <Header />
       <Layout>
-        <Nav />
+        <SiderMenu />
         <Layout.Content>
           <Outlet />
         </Layout.Content>
